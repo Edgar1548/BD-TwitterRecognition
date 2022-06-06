@@ -36,3 +36,9 @@ def generateIndexInv(tokens, data_path, stop_words):
         decode_file.close()
     return [index_inv, num_tweets]
 
+/*
+- Tomando de "N" bloques en "N" bloques realizamos diccionarios de terminos y documentos donde aparecen
+- Por motivos de guardar menos bytes a cada termino se le asigna un ID y tendriamos un term ID - document ID
+- Tenemos "M" diccionarios , ahora leemos de dos bloques en dos bloques y comparamos los term ID y los documentos de ambos bloques
+- Juntamos estos dos bloques en uno solo y lo guardamos, realizar el mismo procedimiento hasta obtener un solo diccionario con todos los term id y doc id
+*/
