@@ -1,5 +1,4 @@
 import json
-import sys
 from os import listdir
 from os.path import isfile, join
 
@@ -22,6 +21,7 @@ def parse_file(file_in, file_out):
             cleantweet.update({"text": tweet['text']})
         else:
             cleantweet.update({"text": tweet['RT_text']})
+        cleantweet.update({"user": tweet['user_name']})
         cleantweet.update({"date": tweet['date']})
         cleantweet.update({"retweeted": tweet['retweeted']})
         cleanLines.append(cleantweet)
@@ -30,7 +30,7 @@ def parse_file(file_in, file_out):
     ptrFile_out.close()
 
 
-def clean(path_in, path_out):
+def clean_data(path_in, path_out):
     for f in listdir(path_in):
         file_in = join(path_in, f)
         file_out = join(path_out, f)

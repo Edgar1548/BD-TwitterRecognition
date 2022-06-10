@@ -1,49 +1,38 @@
+from ntpath import join
+from memoriasec import readJsonData
 import params
-from cleaner import clean
-from preprocesamiento import generateStopFile
+from generate_tokens import generateTokens
+from collections import Counter
+from retrievalscore import ScoreRetrieval
 
-
-def preapp_static():
-    #cleaning static data
-    clean(params.static_path_folder, params.static_clean_path)
-
-    #generate stopwords
-    stop_words = generateStopFile(params.stoplist_file)
-
-    #create_invertindex and saving
-
-    #calculate norma of ever file
-
-    #saving invertindex
-    # SAVE INVERTINDEX BLOCKS IN INDICE BLOCKS
-
-    # MERGE BLOCKS
-
-
-def consult_static(query, topk):
+def consultStatic(query, topk):
+    n = 0
+    with(open("N.txt", "r", encoding="utf-8") as file):
+        for i in file:
+            n = i
+    indexinv = readJsonData(params.index_path)
+    norms = readJsonData(params.norm_path)
 
     # convert query to tokens
-    # search tokens in indicesdb
-    # get score and text
+    query_tf = dict(Counter(query))
 
-    #create dic of score[N] ; N = total tweets
-    #use dic of Norms[N]
-    #for each t in query_terms
-    #   calculate Wt,qry
-    #   for each doc of t that is in index_inverted
-    #       do  score[doc] += Wt,qry * Wt,doc
-    #for each doc in Norms
-    #   do Scores[doc] = Scores[doc]/Norms[doc]
-    #sort Scores
-    #return TopK
+    # return topk score
+    score = ScoreRetrieval(query, query_tf, indexinv, int(n), norms)
+    score = score[:topk]
 
-    # return topk score and text
+    # return data
+    consult_response = {}
+    path = score[0][1][1][1]
+    tweets = readJsonData(join(params.static_path_clean, path))
+    for i in score:
+        temp = i[1][1][1]
+        if path != temp:
+            tweets = readJsonData(join(params.static_path_clean, temp))
+            path = temp
+        data = tweets[i[1][1][0]]
+        consult_response[i[0]] = [data['text'], data['date'], data['user'], round(i[1][0], 5)]
 
-    return topk
+    return consult_response
 
 
 #Indice INVERTIDO ESCALABLE
-
-# ORDENAR EN FUNCION DE TERMINOS
-
-preapp_static()
