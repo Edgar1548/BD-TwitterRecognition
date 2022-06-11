@@ -15,6 +15,27 @@ Vista del FrontEnd:
 El FrontEnd se implemento con React, y debido a que el programa se basa en hacer una consulta dado 2 parametro no hay mucho que resaltar excepto por la función que se encarga de eso:
 
 
+``` react 
+const handleSubmit = (event) => {
+    event.preventDefault()
+    fetch("/api/consult", {
+      method: "POST",
+      body: JSON.stringify({
+        consult: listofInputs.consult,
+        topk: listofInputs.topk,
+      }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        onInputsSubmit(data);
+      });
+  };
+
+```
 
 
 ## Backend:
