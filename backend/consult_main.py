@@ -5,13 +5,13 @@ from generate_tokens import generateStopFile, generateTokens
 import time
 
 
-def consult_topk(type, query, topk):
+def consult_topk(type, query, topk, indexinv):
     if (type == "static"):
         stop_words = generateStopFile(params.stoplist_file)
         query_tokens = generateTokens(query, stop_words, "spanish")
 
         start_time = time.time()
-        result_static = app_static.consultStatic(query_tokens, topk)
+        result_static = app_static.consultStatic(query_tokens, topk, indexinv)
         time_static = round(time.time() - start_time, 5)
 
         start_time = time.time()
@@ -26,3 +26,4 @@ def consult_topk(type, query, topk):
         }
 
     return {'Error': "Something fail"}
+
