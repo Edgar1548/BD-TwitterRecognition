@@ -91,7 +91,7 @@ from app import db
 db.create_all()
 ```
 
-Luego se debe ejecutar la función pre_app, que se encargara de llenar la data en nuestra base de datos, asi como tambien de guardar en archivos .json el norm de cada documento, y crear y guardar el indexinverted.
+Luego se debe ejecutar la función pre_app, que se encargara de llenar la data en nuestra base de datos, asi como tambien de guardar en archivos .json el norm de cada documento, y crear y guardar el indexinverted. Considerar que actualmente debido al limite de github acerca del tamaño maxmo de un archivo actualmente invertedindex y norm no estan en el repisotorio debido al tamaño
 
 
 
