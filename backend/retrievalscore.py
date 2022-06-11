@@ -35,7 +35,6 @@ def generateTfIdfQueryDocs(query_tokens, index_inv_filter, N):
 
 
 def ScoreRetrieval(query_tokens, query_tf, invertedindex_tokens, N, norm):
-    ##invertedindex_tokens = readIndex(query_tokens)
     score = {}
     [query_tfidf,
      query_norm] = generateTfIdfSquareQuery(query_tf, invertedindex_tokens, N)
