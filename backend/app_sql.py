@@ -1,9 +1,8 @@
-from generate_tokens import clean, generateTokens
+from generate_tokens import clean
 import app
 import os
 from memoriasec import readJsonData
 from ntpath import join
-import time
 
 
 def charge_data(data_path):
@@ -38,7 +37,7 @@ def staticConsultSql(query, topk):
     languaje = 'spanish'
     token_query_text = ' '.join([str(item) for item in query])
     token_query_text_clean = token_query_text.replace(' ', ' | ')
-    consult = f"select id_tweet, text, date, twitts.user, ts_rank(text_ts, query_ts) as score from twitts, to_tsquery('{languaje}', '{token_query_text_clean}') query_ts where query_ts @@ text_ts order by score desc limit {topk};"
+    consult = f"select id_tweet, text, date, twitts.user, ts_rank_cd(text_ts, query_ts) as score from twitts, to_tsquery('{languaje}', '{token_query_text_clean}') query_ts where query_ts @@ text_ts order by score desc limit {topk};"
     data = app.db.engine.execute(consult)
     data_map = {}
     for i in data:
