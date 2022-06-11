@@ -10,7 +10,8 @@ Utec search
 Nuestro proyecto es capaz de realizar consultas a una cantidad de 479945 twitts que han sido recompilados anteriormente.
 
 ## Fronted:
-Vista del FrontEnd:
+Vista del FrontEnd:![a](https://user-images.githubusercontent.com/66433825/173174346-12602b55-e706-4c97-aa06-25a072d2bcf7.jpg)
+
 
 El FrontEnd se implemento con React, y debido a que el programa se basa en hacer una consulta dado 2 parametro no hay mucho que resaltar excepto por la función que se encarga de eso:
 
@@ -128,3 +129,4 @@ py app.py
 
 
 ## Video:
+https://youtu.be/BgBZyesfh4s
