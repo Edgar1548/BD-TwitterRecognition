@@ -22,7 +22,7 @@ El Backend de deasrrollo en python, usando Flask, SQLAlchemy.
 
 Dentro del backend primero se debe ejecutar la función pre_app, que se encargara de llenar la data en nuestra base de datos, asi como tambien de guardar en archivos .json el norm de cada documento, y tambien el indexinverted.
 
-...
+``` python 
 def preapp_static():
     clean_data(params.static_path_folder, params.static_path_clean)
 
@@ -36,7 +36,7 @@ def preapp_static():
                          params.index_path)
     generateNorm(params.index_path, N, params.norm_path)
 
-...
+```
 
 
 ## Video:
