@@ -16,9 +16,9 @@ export const Results = ({ listofResult }) => {
       list_data.push(temp);
       temp = [];
     }
+    list_data.sort((a, b) => (a[4] < b[4] ? 1 : -1));
     return list_data;
   };
-
   if (listofResult != undefined) {
     result = parseData(listofResult["data"]);
     result_sql = parseData(listofResult["data_sql"]);
@@ -45,3 +45,4 @@ export const Results = ({ listofResult }) => {
     </>
   );
 };
+
