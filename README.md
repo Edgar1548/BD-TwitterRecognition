@@ -1,8 +1,9 @@
 # BDproyect
 
 ## Integrantes:
--Edgar Chacón 
--Paulo Cuaresma
+| Edgar Chacon| Paulo Cuaresma|
+| ----- | ---- |
+| Backend | Frontend + video + clean BD |
 
 ## Introducción:
 Utec search
