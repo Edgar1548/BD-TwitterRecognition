@@ -3,7 +3,8 @@ import psycopg2
 import consult_main
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
-#from app_static import consult_static
+import params
+from memoriasec import readJsonData
 
 app = Flask(__name__)
 app.config[
@@ -12,10 +13,13 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 type_query = "static"
+indexinv = {}
 
 
-@app.route('/api', methods=['GET'])
+@app.route('/api', methods=['POST'])
 def index():
+    global indexinv
+    indexinv = readJsonData(params.index_path)
     return {'name': 'Hello World'}
 
 
@@ -28,11 +32,12 @@ def change():
 @app.route('/api/consult', methods=['POST'])
 def consult():
     global type_query
+    global indexinv
     request_data = json.loads(request.data)
     consult = request_data['consult']
     topk = int(request_data['topk'])
     if (type_query == "static"):
-        data = consult_main.consult_topk(type_query, consult, topk)
+        data = consult_main.consult_topk(type_query, consult, topk, indexinv)
         return data
     return {'201': "isOk"}
 
