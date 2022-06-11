@@ -36,6 +36,8 @@ export const ConsultPage = () => {
 
   return (
     <>
+      <h1>UTEC SEARCH</h1>
+      <h3>CONSULTA:</h3>
       <Input
         onInputsChange={handleInputsChange}
         onInputsSubmit={handleInputSubmit}
