@@ -60,4 +60,17 @@ def preapp_static():
 ```
 
 
+Posteriormente ya se puede ejecutar los comandos que serviran tanto para poder empezar el backend y frontend:
+### FrontEnd
+``` 
+npm start
+```
+### Backend
+```
+py app.py
+```
+
+
+
+
 ## Video:
