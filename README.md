@@ -3,7 +3,7 @@
 ## Integrantes:
 | Edgar Chacon| Paulo Cuaresma|
 | ----- | ---- |
-| Backend | Frontend + video + clean BD |
+| Backend + Functional Front End| Template Frontend + video + funcion de clean data inicial |
 
 ## Introducción:
 Utec search
