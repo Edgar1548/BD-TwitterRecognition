@@ -15,7 +15,7 @@ Vista del FrontEnd:
 El FrontEnd se implemento con React, y debido a que el programa se basa en hacer una consulta dado 2 parametro no hay mucho que resaltar excepto por la función que se encarga de eso:
 
 
-``` react 
+``` javascript 
 const handleSubmit = (event) => {
     event.preventDefault()
     fetch("/api/consult", {
