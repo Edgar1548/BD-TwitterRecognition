@@ -5,22 +5,18 @@ from generate_tokens import generateTokens
 from collections import Counter
 from retrievalscore import ScoreRetrieval
 
-def consultStatic(query, topk):
+def consultStatic(query, topk, indexinv):
     n = 0
     with(open("N.txt", "r", encoding="utf-8") as file):
         for i in file:
             n = i
-    indexinv = readJsonData(params.index_path)
     norms = readJsonData(params.norm_path)
 
-    # convert query to tokens
     query_tf = dict(Counter(query))
 
-    # return topk score
     score = ScoreRetrieval(query, query_tf, indexinv, int(n), norms)
     score = score[:topk]
 
-    # return data
     consult_response = {}
     path = score[0][1][1][1]
     tweets = readJsonData(join(params.static_path_clean, path))
@@ -33,6 +29,3 @@ def consultStatic(query, topk):
         consult_response[i[0]] = [data['text'], data['date'], data['user'], round(i[1][0], 5)]
 
     return consult_response
-
-
-#Indice INVERTIDO ESCALABLE
