@@ -20,6 +20,20 @@ export const ConsultPage = () => {
     setResult(data);
   };
 
+  useEffect(() => {
+    fetch("/api", {
+      method: "POST",
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        console.log(data);
+      });
+  }, []);
+
   return (
     <>
       <Input
