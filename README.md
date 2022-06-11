@@ -2,6 +2,6 @@
 INTEGRANTES:
 -Edgar Chacón 
 -Paulo Cuaresma
-##Introducción:##
+## Introducción:
 ##Fronted:
 ##Backend:
