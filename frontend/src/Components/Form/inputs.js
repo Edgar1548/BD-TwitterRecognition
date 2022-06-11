@@ -6,6 +6,7 @@ export const Input = ({ onInputsChange, onInputsSubmit, listofInputs }) => {
   };
 
   const handleSubmit = (event) => {
+    event.preventDefault()
     fetch("/api/consult", {
       method: "POST",
       body: JSON.stringify({
@@ -27,20 +28,21 @@ export const Input = ({ onInputsChange, onInputsSubmit, listofInputs }) => {
     <>
       <input
         name="consult"
-        className="textarea__consult white"
+        className="textarea__consult white4"
         placeholder="Texto de la consulta"
         onChange={(e) => handleChange(e)}
       ></input>
       <div className="container__block">
+        <h3>TOP K:</h3>
         <input
           name="topk"
-          className="white"
-          placeholder="Tok K"
+          className="white3"
+          placeholder="Top K"
           onChange={(e) => handleChange(e)}
         />
         <button
           type="submit"
-          className="white"
+          className="white2"
           onClick={(e) => handleSubmit(e)}
         >
           Buscar
