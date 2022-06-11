@@ -13,11 +13,6 @@ def generateIndexInv(data_path, stop_words, languaje, indexinv_path):
     index_inv = {}
     num_tweets = 0
     for file in data_files:
-        # MODIFY WITH BLOCKS in secondary MEMORY
-        # CREATE A BLOCK TO EACH FILE
-        # OR TO EACH X FILES
-        # OR WHEN YOUR INDEX_INV HAVE A X LIMIT
-        # X IS PROPOSED BY US
         tweets = readJsonData(join(data_path, file))
         num_tweets += len(tweets)
         i = 0
